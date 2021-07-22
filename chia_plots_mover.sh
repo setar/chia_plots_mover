@@ -4,7 +4,6 @@
 # script for moving ready chia plots
 # Make moves finished plots from multiple sources to multiple destination directories with location control during the move.
 # Can use multiple source hosts with one destination server without interfering with each other (space reservation)
-# TODO : now script use single forked move procces in one time, may be need many threads ?
 #=================================================================================================================
 #  Start Config data
 #-----------------------------------------------------------------------------------------------------------------
