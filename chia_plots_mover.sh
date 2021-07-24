@@ -32,7 +32,7 @@ DEBUG=false # true for debug mode
 #=================================================================================================================
 [[ ! -a /bin/zsh ]] && echo "This script need ZSH shell" #|| echo "Start script"
 dt=$(date '+%d.%m.%Y %H:%M:%S');
-count=1 # number of move process
+count=`ps ax | grep -A 1 chia_plots_mover.sh |grep mv |grep plot |wc -l` # number of move process
 [[  $DEBUG == "true" ]] &&echo "$dt Search source Plots"
 for dir in ${=SRC_DIRS}
 do # перебор исходных каталогов
@@ -88,8 +88,8 @@ do # перебор исходных каталогов
             cd /home/chia/chia-blockchain/
             . ./activate
             chia plots add -d "$dst"
-           (( count = count + 1 ))
            [[ $count -gt $MAX_COUNT ]] && return 0 # выход из скрипта по достижению максимального кол-ва потоков
+           (( count = count + 1 ))
         else # места для сохранения нет
 #          [[  $DEBUG == "true" ]] && echo "          low space($free < $slen)"
         fi
